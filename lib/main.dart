@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   // The function that fetches data from the API
   Future<void> _fetchData() async {
 
-    final response = await http.get(Uri.parse('https://web-kg2.herokuapp.com/api/dokumen'));
+    final response = await http.get(Uri.parse('https://web-kg2.herokuapp.com/api/artikel'));
     final data = json.decode(response.body);
 
     setState(() {
@@ -49,14 +49,28 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Horizontal List';
 
     return MaterialApp(
-      title: title,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text(title),
+          backgroundColor: const Color(0xFF2995B2),
+          leading: GestureDetector(
+          onTap: (){
+            print("asd");
+          },
+          child: const Icon(Icons.arrow_back_ios)
         ),
+        actions: <Widget>[
+    Padding(
+      padding: const EdgeInsets.only(right: 20.0),
+      child: GestureDetector(
+        onTap: () {},
+        child: const Icon(
+            Icons.more_vert,
+          ),
+      )
+    ),]
+      ),
       
         body: SafeArea(
             child:ListView.builder(

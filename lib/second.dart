@@ -35,6 +35,26 @@ class _SecondState extends State<Second> {
     // Size size = MediaQuery.of(context).size;
     return Scaffold(
       
+
+        appBar: AppBar(
+          backgroundColor: const Color(0xFF2995B2),
+          leading: GestureDetector(
+          onTap: (){
+            print("asd");
+          },
+          child: const Icon(Icons.arrow_back_ios)
+        ),
+        actions: <Widget>[
+    Padding(
+      padding: const EdgeInsets.only(right: 20.0),
+      child: GestureDetector(
+        onTap: () {},
+        child: const Icon(
+            Icons.more_vert,
+          ),
+      )
+    ),]
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
