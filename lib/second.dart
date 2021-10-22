@@ -40,7 +40,7 @@ class _SecondState extends State<Second> {
           backgroundColor: const Color(0xFF2995B2),
           leading: GestureDetector(
           onTap: (){
-            print("asd");
+            Navigator.pop(context);
           },
           child: const Icon(Icons.arrow_back_ios)
         ),
