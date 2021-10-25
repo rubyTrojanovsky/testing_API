@@ -101,7 +101,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-
 class Article extends StatelessWidget{
  final String judul;
  final String isiArtikel;
