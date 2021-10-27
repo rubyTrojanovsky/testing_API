@@ -1,4 +1,4 @@
-import 'articlelist.dart';
+import 'articlelist2.dart';
 import 'model_artikel.dart';
 import 'package:flutter/material.dart';
 

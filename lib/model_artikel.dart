@@ -25,36 +25,36 @@ class ArticleData {
 
 class ArticleDataList {
     ArticleDataList({
-        required this.id,
+        // required this.id,
         required this.judul,
         required this.gambar,
         required this.deskripsi,
-        required this.createdAt,
-        required this.updatedAt,
+        // required this.createdAt,
+        // required this.updatedAt,
     });
 
-    int id;
+    // int id;
     String judul;
     String gambar;
     String deskripsi;
-    DateTime createdAt;
-    DateTime updatedAt;
+    // DateTime createdAt;
+    // DateTime updatedAt;
 
     factory ArticleDataList.fromJson(Map<dynamic, dynamic> json) => ArticleDataList(
-        id: json["id"],
+        // id: json["id"],
         judul: json["judul"],
         gambar: json["gambar"],
         deskripsi: json["deskripsi"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
+        // createdAt: DateTime.parse(json["created_at"]),
+        // updatedAt: DateTime.parse(json["updated_at"]),
     );
 
     Map<dynamic, dynamic> toJson() => {
-        "id": id,
+        // "id": id,
         "judul": judul,
         "gambar": gambar,
         "deskripsi": deskripsi,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        // "created_at": createdAt.toIso8601String(),
+        // "updated_at": updatedAt.toIso8601String(),
     };
 }
