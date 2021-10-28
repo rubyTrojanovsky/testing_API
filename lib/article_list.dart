@@ -44,6 +44,7 @@ class ArticleList extends StatelessWidget {
                         child: ListTile(
                           // leading: Image.network(
                           //   snapshot.data![index].gambar,
+                          //   width: 100,
                           //   fit: BoxFit.cover,
                           // ),
                           title: Text(snapshot.data![index].judul,
@@ -57,6 +58,8 @@ class ArticleList extends StatelessWidget {
                                           judul: snapshot.data![index].judul,
                                           isiArtikel:
                                               snapshot.data![index].deskripsi,
+                                          gambar:
+                                            snapshot.data![index].gambar,
                                         )));
                           },
                         ),
@@ -87,7 +90,9 @@ class ArticleList extends StatelessWidget {
     for (int i = 0; i < data.length; i++) {
       String judul = data[i]['judul'];
       String deskripsi = data[i]['deskripsi'];
-      String gambar = data[i]['gambar'];
+      String gambarawal = data[i]['gambar'];
+      String linkKG = 'https://web-kg2.herokuapp.com/';
+      String gambar= (linkKG+gambarawal);
 
       ArticleDataList konten =
           ArticleDataList(judul: judul, gambar: gambar, deskripsi: deskripsi);

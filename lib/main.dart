@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'articlelist2.dart';
+import 'article_list.dart';
 
 // import 'Article.dart'; // for using json.decode()
 

@@ -1,13 +1,12 @@
-import 'articlelist2.dart';
-import 'model_artikel.dart';
 import 'package:flutter/material.dart';
 
 
 class IsiArticle extends StatelessWidget{
  final String judul;
  final String isiArtikel;
+ final String gambar;
 
-  const IsiArticle({Key? key, required this.judul, required this.isiArtikel}) : super(key: key);
+  const IsiArticle({Key? key, required this.judul, required this.isiArtikel, required this.gambar}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +36,25 @@ class IsiArticle extends StatelessWidget{
           children: [
             Center(
               child: Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(25.0),
                 child: Text(
                   judul,
+                  style: TextStyle(fontSize: 32),
                 ),
               ),
             ),
             Center(
-              child: Text(
-                isiArtikel,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Image.network(gambar)
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  isiArtikel,
+                ),
               ),
             )
           ],
