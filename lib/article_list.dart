@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'model_artikel.dart';
 
 class ArticleList extends StatelessWidget {
-  const ArticleList({Key? key}) : super(key: key);  
+  const ArticleList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,56 +34,79 @@ class ArticleList extends StatelessWidget {
             future: _fetchData(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return(ListView.builder(
-                      itemExtent: 120,
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap:  () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => IsiArticle(
-                                              judul: snapshot.data![index].judul,
-                                              isiArtikel:
-                                                  snapshot.data![index].deskripsi,
-                                              gambar:
-                                                snapshot.data![index].gambar,
-                                            )));
-                              },
-                            child: Card(
-                              elevation: 5.0,
-                              margin: const EdgeInsets.all(10),
-                              child: Row(
-                                children: [
-                                  Image.network(snapshot.data![index].gambar, width: 125,height: 100, fit: BoxFit.cover,),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                                          child: Text(snapshot.data![index].judul,
-                                          style: const TextStyle(fontSize: 20),),
+                return (ListView.builder(
+                    itemExtent: 140,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => IsiArticle(
+                                          judul: snapshot.data![index].judul,
+                                          isiArtikel:
+                                              snapshot.data![index].deskripsi,
+                                          gambar: snapshot.data![index].gambar,
+                                        )));
+                          },
+                          child: Card(
+                            elevation: 5.0,
+                            margin: const EdgeInsets.all(10),
+                            child: Row(
+                              children: [
+                                Container(
+                                  color: const Color(0xFF2995B2),
+                                  width: 140,
+                                  height: double.infinity,
+                                  child: Image.network(
+                                    snapshot.data![index].gambar,
+                                    // width: 125,
+                                    // height: 100,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (BuildContext context,
+                                        Object exception,
+                                        StackTrace? stackTrace) {
+                                      return const Icon(Icons.error, color: Colors.white,);
+                                    },
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12, vertical: 6),
+                                        child: Text(
+                                          snapshot.data![index].judul,
+                                          style: const TextStyle(fontSize: 20),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(bottom: 6.0, left: 12.0, right: 12.0 ),
-                                          child: Text(snapshot.data![index].deskripsi,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            bottom: 6.0,
+                                            left: 12.0,
+                                            right: 12.0),
+                                        child: Text(
+                                          snapshot.data![index].deskripsi,
                                           maxLines: 3,
                                           overflow: TextOverflow.ellipsis,
-                                          ),
                                         ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                        ));
-                      })
-                );
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ));
+                    }));
               } else if (snapshot.hasError) {
-                return const Center(child: Text("Terjadi masalah saat menghubungkan ke server, coba ulangi lagi"));
+                return const Center(
+                    child: Text(
+                        "Terjadi masalah saat menghubungkan ke server, coba ulangi lagi"));
               }
               return const Center(child: CircularProgressIndicator());
             },
@@ -109,8 +132,7 @@ class ArticleList extends StatelessWidget {
       String deskripsi = data[i]['deskripsi'];
       String gambarawal = data[i]['gambar'];
       String linkKG = 'https://web-kg2.herokuapp.com/';
-      String gambar= (linkKG+gambarawal);
-      
+      String gambar = (linkKG + gambarawal);
 
       ArticleDataList konten =
           ArticleDataList(judul: judul, gambar: gambar, deskripsi: deskripsi);
