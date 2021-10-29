@@ -1,16 +1,11 @@
-# apitestign2
+# Current Output 29/10/21
+gambarnya error gara2 storage
 
-A new Flutter project.
+![image](https://user-images.githubusercontent.com/85925810/139414789-b4d55cc3-144e-49b1-9082-85adf3f0e30b.png)
+![image](https://user-images.githubusercontent.com/85925810/139414855-a1705439-7d08-4c14-838e-e31c16357711.png)
 
-## Getting Started
+seharusnya ada gambar di tengah title dan nama, kaya gini
 
-This project is a starting point for a Flutter application.
+![image](https://user-images.githubusercontent.com/85925810/139415007-87da5237-4f2c-4877-9cf5-dfc6b63d4a85.png)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
