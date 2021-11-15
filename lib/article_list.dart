@@ -1,143 +1,264 @@
-import 'isi_article.dart';
+// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'model_artikel.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class ArticleList extends StatelessWidget {
-  const ArticleList({Key? key}) : super(key: key);
+class DiscussPage extends StatelessWidget {
+  const DiscussPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-            backgroundColor: const Color(0xFF2995B2),
-            leading: GestureDetector(
-                onTap: () {
-                  print("asd");
-                },
-                child: const Icon(Icons.arrow_back_ios)),
-            actions: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.only(right: 20.0),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.more_vert,
-                    ),
-                  )),
-            ]),
-        body: SafeArea(
-          child: FutureBuilder<List<ArticleDataList>>(
-            future: _fetchData(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return (ListView.builder(
-                    itemExtent: 140,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => IsiArticle(
-                                          judul: snapshot.data![index].judul,
-                                          isiArtikel:
-                                              snapshot.data![index].deskripsi,
-                                          gambar: snapshot.data![index].gambar,
-                                        )));
-                          },
-                          child: Card(
-                            elevation: 5.0,
-                            margin: const EdgeInsets.all(10),
-                            child: Row(
-                              children: [
-                                Container(
-                                  color: const Color(0xFF2995B2),
-                                  width: 140,
-                                  height: double.infinity,
-                                  child: Image.network(
-                                    snapshot.data![index].gambar,
-                                    // width: 125,
-                                    // height: 100,
-                                    fit: BoxFit.cover,
-                                    errorBuilder: (BuildContext context,
-                                        Object exception,
-                                        StackTrace? stackTrace) {
-                                      return const Icon(Icons.error, color: Colors.white,);
-                                    },
+        title: 'Discussion',
+        home: Scaffold(
+            resizeToAvoidBottomInset: true,
+            appBar: AppBar(
+                title: Text('Discussion'),
+                backgroundColor: const Color(0xFF2995B2),
+                leading: GestureDetector(
+                    onTap: () {
+                      print("asd");
+                    },
+                    child: const Icon(Icons.arrow_back_ios)),
+                actions: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: const Icon(
+                          Icons.more_vert,
+                        ),
+                      )),
+                ]),
+            body: SafeArea(
+                child: SingleChildScrollView(
+                    child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.purple[200],
+                                          borderRadius:
+                                              BorderRadius.circular(100)),
+                                      height: 40,
+                                      width: 40,
+                                      child: const Icon(
+                                        Icons.person,
+                                        size: 15,
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                  Expanded(
+                                      child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12, vertical: 6),
-                                        child: Text(
-                                          snapshot.data![index].judul,
-                                          style: const TextStyle(fontSize: 20),
-                                        ),
+                                      SizedBox(
+                                        height: 10,
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            bottom: 6.0,
-                                            left: 12.0,
-                                            right: 12.0),
-                                        child: Text(
-                                          snapshot.data![index].deskripsi,
-                                          maxLines: 3,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
+                                      Text(
+                                        'Wizli',
+                                        style: GoogleFonts.montserrat(
+                                            fontSize: 18),
                                       ),
+                                      Text('12 November 2021'),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text('Bagaimana cara membuat masker?',
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          )),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        'Hallo teman teman saya mau menanyakan bagaimana cara membuat masker untuk melembabkan kulit? Karena kulit area mulut saya kering sehingga banyak kulit yang agak terkelupas',
+                                        textAlign: TextAlign.left,
+                                        style: GoogleFonts.montserrat(
+                                            fontSize: 14),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Row(
+                                        children: [
+                                          GestureDetector(
+                                            child: Icon(
+                                              Icons.thumb_up_outlined,
+                                              size: 18,
+                                              color: Colors.grey[600],
+                                            ),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Text(
+                                            '12 Likes',
+                                            style: GoogleFonts.montserrat(
+                                              color: Colors.grey[600],
+                                              // fontWeight: FontWeight.normal,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          SizedBox(width: 20),
+                                          GestureDetector(
+                                            child: Icon(
+                                              Icons.mode_comment_outlined,
+                                              size: 18,
+                                              color: Colors.grey[600],
+                                            ),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Text(
+                                            '4 Komentar',
+                                            style: GoogleFonts.montserrat(
+                                              color: Colors.grey[600],
+                                              // fontWeight: FontWeight.normal,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          SizedBox(width: 20),
+                                          GestureDetector(
+                                            child: Icon(
+                                              Icons.reply_outlined,
+                                              size: 18,
+                                              color: Colors.grey[600],
+                                            ),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Text(
+                                            'Reply',
+                                            style: GoogleFonts.montserrat(
+                                              color: Colors.grey[600],
+                                              // fontWeight: FontWeight.normal,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 20),
                                     ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ));
-                    }));
-              } else if (snapshot.hasError) {
-                return const Center(
-                    child: Text(
-                        "Terjadi masalah saat menghubungkan ke server, coba ulangi lagi"));
-              }
-              return const Center(child: CircularProgressIndicator());
-            },
-          ),
-        ),
-      ),
-    );
-  }
+                                  )),
+                                  Padding(
+                                      padding: const EdgeInsets.only(top: 15),
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: const Icon(
+                                          Icons.more_vert,
+                                        ),
+                                      )),
+                                ],
+                              ),
+                              SizedBox(
+                                width: double.infinity,
+                                height: 2,
+                                child: DecoratedBox(
+                                    decoration:
+                                        BoxDecoration(color: Colors.grey[350])),
+                              ),
 
-  Future<List<ArticleDataList>> _fetchData() async {
-    final response =
-        await http.get(Uri.parse('https://web-kg2.herokuapp.com/api/artikel'));
-    Map<String, dynamic> map = jsonDecode(response.body);
-    List<dynamic> data = map['data'];
-    List<ArticleDataList> articleData = createArticleList(data);
-    return articleData;
-  }
+                              //COMMENT SECTION
 
-  List<ArticleDataList> createArticleList(List data) {
-    List<ArticleDataList> daftarArticle = [];
-    for (int i = 0; i < data.length; i++) {
-      String judul = data[i]['judul'];
-      String deskripsi = data[i]['deskripsi'];
-      String gambarawal = data[i]['gambar'];
-      String linkKG = 'https://web-kg2.herokuapp.com/';
-      String gambar = (linkKG + gambarawal);
-
-      ArticleDataList konten =
-          ArticleDataList(judul: judul, gambar: gambar, deskripsi: deskripsi);
-      daftarArticle.add(konten);
-    }
-    return daftarArticle;
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Center(
+                                  child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[200],
+                                    borderRadius: BorderRadius.circular(30)),
+                                height: 20,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 3),
+                                  child: Text('12 November 2021 - 19:55',
+                                      style: GoogleFonts.montserrat(
+                                        color: Colors.grey[600],
+                                      )),
+                                ),
+                              )),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.red[400],
+                                            borderRadius:
+                                                BorderRadius.circular(100)),
+                                        height: 40,
+                                        width: 40,
+                                        child: const Icon(
+                                          Icons.person,
+                                          size: 15,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            'Ruby',
+                                            style: GoogleFonts.montserrat(
+                                                fontSize: 18),
+                                          ),
+                                          Text('2 menit yang lalu'),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus lacinia aliquet. Integer feugiat quam consequat orci vulputate, nec hendrerit orci blandit. Aliquam consequat mi a finibus lobortis. Curabitur vulputate.',
+                                            textAlign: TextAlign.left,
+                                            style: GoogleFonts.montserrat(
+                                                fontSize: 14),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              GestureDetector(
+                                                child: Icon(
+                                                  Icons.reply_outlined,
+                                                  size: 18,
+                                                  color: Colors.grey[600],
+                                                ),
+                                              ),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                'Reply',
+                                                style: GoogleFonts.montserrat(
+                                                  color: Colors.grey[600],
+                                                  // fontWeight: FontWeight.normal,
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ])),
+                                    SizedBox(
+                                      width: 10,
+                                    )
+                                  ])
+                            ]))))));
   }
 }

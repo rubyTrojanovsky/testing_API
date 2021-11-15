@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       // Hide the debug banner
       debugShowCheckedModeBanner: false,
-      title: 'Testing',
-      home: ArticleList(),
+      title: 'Artikel',
+      home: DiscussPage(),
     );
   }
 }

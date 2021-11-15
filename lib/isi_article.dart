@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class IsiArticle extends StatelessWidget{
  final String judul;
  final String isiArtikel;
@@ -43,12 +42,12 @@ class IsiArticle extends StatelessWidget{
                 ),
               ),
             ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Image.network(gambar)
-              ),
-            ),
+            // Center(
+            //   child: Padding(
+            //     padding: const EdgeInsets.symmetric(horizontal: 20),
+            //     child: Image.network(gambar)
+            //   ),
+            // ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -60,7 +59,6 @@ class IsiArticle extends StatelessWidget{
           ],
         ),
       ),
-    );
-    
+    );  
   }
 }
