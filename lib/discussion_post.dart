@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:apitestign2/discussion_comment.dart';
+import 'package:like_button/like_button.dart';
+import 'package:apitestign2/discussion_comment_box.dart';
 
 class DiscussPage extends StatelessWidget {
   const DiscussPage({Key? key}) : super(key: key);
@@ -40,19 +43,12 @@ class DiscussPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.purple[200],
-                                          borderRadius:
-                                              BorderRadius.circular(100)),
-                                      height: 40,
-                                      width: 40,
-                                      child: const Icon(
-                                        Icons.person,
-                                        size: 15,
-                                        color: Colors.white,
-                                      ),
+                                    padding: const EdgeInsets.only(right: 7),
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage(
+                                          "assets/images/profile.png"),
+                                      radius: 25.0,
+                                      backgroundColor: Colors.transparent,
                                     ),
                                   ),
                                   Expanded(
@@ -91,22 +87,45 @@ class DiscussPage extends StatelessWidget {
                                       ),
                                       Row(
                                         children: [
-                                          GestureDetector(
-                                            child: Icon(
-                                              Icons.thumb_up_outlined,
-                                              size: 18,
-                                              color: Colors.grey[600],
-                                            ),
-                                          ),
-                                          SizedBox(width: 5),
-                                          Text(
-                                            '12 Likes',
-                                            style: GoogleFonts.montserrat(
-                                              color: Colors.grey[600],
-                                              // fontWeight: FontWeight.normal,
-                                              fontSize: 12,
-                                            ),
-                                          ),
+                                          LikeButton(
+                            size: 20,
+                            circleColor:
+                            CircleColor(start: Color(0xff00ddff), end: Color(0xff0099cc)),
+                            bubblesColor: BubblesColor(
+                              dotPrimaryColor: Color(0xff33b5e5),
+                              dotSecondaryColor: Color(0xff0099cc),
+                            ),
+                            likeBuilder: (bool isLiked) {
+                              return Icon(
+                                Icons.favorite,
+                                color: isLiked ? Colors.red : Colors.grey,
+                                size: 20,
+                              );
+                            },
+                            likeCount: 0,
+                            countBuilder: (count, bool isLiked, String text) {
+                              var color = isLiked ? Colors.black : Colors.grey;
+                              Widget result;
+                              if (count == 0) {
+                                result = Text(
+                                  "Suka",
+                                  style: TextStyle(
+                                    color: color,
+                                    fontSize: 12,
+                                  ),
+                                );
+                              } else {
+                                result = Text(
+                                  text + " " + "suka",
+                                  style: TextStyle(
+                                    color: color,
+                                    fontSize: 12,
+                                  ),
+                                );
+                              }
+                              return result;
+                            },
+                          ),
                                           SizedBox(width: 20),
                                           GestureDetector(
                                             child: Icon(
@@ -169,96 +188,16 @@ class DiscussPage extends StatelessWidget {
                               SizedBox(
                                 height: 10,
                               ),
-                              Center(
-                                  child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[200],
-                                    borderRadius: BorderRadius.circular(30)),
-                                height: 20,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 3),
-                                  child: Text('12 November 2021 - 19:55',
-                                      style: GoogleFonts.montserrat(
-                                        color: Colors.grey[600],
-                                      )),
-                                ),
-                              )),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.red[400],
-                                            borderRadius:
-                                                BorderRadius.circular(100)),
-                                        height: 40,
-                                        width: 40,
-                                        child: const Icon(
-                                          Icons.person,
-                                          size: 15,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                        child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            'Ruby',
-                                            style: GoogleFonts.montserrat(
-                                                fontSize: 18),
-                                          ),
-                                          Text('2 menit yang lalu'),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus lacinia aliquet. Integer feugiat quam consequat orci vulputate, nec hendrerit orci blandit. Aliquam consequat mi a finibus lobortis. Curabitur vulputate.',
-                                            textAlign: TextAlign.left,
-                                            style: GoogleFonts.montserrat(
-                                                fontSize: 14),
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              GestureDetector(
-                                                child: Icon(
-                                                  Icons.reply_outlined,
-                                                  size: 18,
-                                                  color: Colors.grey[600],
-                                                ),
-                                              ),
-                                              SizedBox(width: 5),
-                                              Text(
-                                                'Reply',
-                                                style: GoogleFonts.montserrat(
-                                                  color: Colors.grey[600],
-                                                  // fontWeight: FontWeight.normal,
-                                                  fontSize: 12,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ])),
-                                    SizedBox(
-                                      width: 10,
-                                    )
-                                  ])
+                              
+                              //GANTI ANTARA COMMENT() YG STATIC ATAU BOXCOMMENT() YANG BISA INPUT COMMENT (TAPI BELOMAN BISA)
+
+                              Comment(),
+                              // Expanded(child: Column(
+                              //   mainAxisAlignment: MainAxisAlignment.start,
+                              //   children: [
+                              //     BoxComment(),
+                              //   ],
+                              // )),
                             ]))))));
   }
 }
